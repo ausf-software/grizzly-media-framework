@@ -14,7 +14,7 @@ public enum BufferSizes {
         index = i;
     }
 
-    public int getSize(){
+    public int getSize() {
         return index;
     }
 }

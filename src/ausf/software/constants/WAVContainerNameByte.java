@@ -17,7 +17,7 @@ public enum WAVContainerNameByte {
         index = bytes;
     }
 
-    public byte[] getByte(){
+    public byte[] getByte() {
         return index;
     }
 

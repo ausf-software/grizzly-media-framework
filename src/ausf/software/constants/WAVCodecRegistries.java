@@ -16,7 +16,7 @@ public enum WAVCodecRegistries {
         index = i;
     }
 
-    public byte getIndex(){
+    public byte getIndex() {
             return index;
     }
 }

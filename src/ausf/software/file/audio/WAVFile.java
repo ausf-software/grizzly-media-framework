@@ -24,35 +24,35 @@ public class WAVFile {
         return path;
     }
 
-    public int getFileSize(){
+    public int getFileSize() {
         return fileSize;
     }
 
-    public short getAudioCodec(){
+    public short getAudioCodec() {
         return audioFormat;
     }
 
-    public short getNumberAudioChanel(){
+    public short getNumberAudioChanel() {
         return numChannels;
     }
 
-    public int getSampleRate(){
+    public int getSampleRate() {
         return sampleRate;
     }
 
-    public int getByteRate(){
+    public int getByteRate() {
         return byteRate;
     }
 
-    public int getBitsPerSample(){
+    public int getBitsPerSample() {
         return bitsPerSample;
     }
 
-    public int getDataSize(){
+    public int getDataSize() {
         return dataSize;
     }
 
-    public int getDataOffset(){
+    public int getDataOffset() {
         return dataOffset;
     }
 

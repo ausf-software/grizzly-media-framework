@@ -17,7 +17,7 @@ public enum ErrorMessage {
         index = i;
     }
 
-    public void printError(){
+    public void printError() {
         index.print();
     }
 
