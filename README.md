@@ -3,4 +3,4 @@
 
 ### The framework supports the following file formats and codecs:
 #### 1. WAV file:
-+ #### PCM (Pulse-code modulation)
++ #### PCM (Pulse-code modulation) - only read
