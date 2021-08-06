@@ -9,6 +9,7 @@ public enum WAVContainerNameByte {
     CHUNK_WAVE (new byte[]{87, 65, 86, 69}),
     CHUNK_FTM (new byte[]{102, 109, 116, 32}),
     CHUNK_DATA (new byte[]{100, 97, 116, 97}),
+    CHUNK_INFO (new byte[]{73, 78, 70, 79}),
     ;
 
     private byte[] index;
