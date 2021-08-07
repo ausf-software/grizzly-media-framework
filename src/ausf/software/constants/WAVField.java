@@ -35,7 +35,7 @@ public enum WAVField {
     }
 
     public int getFieldEnd() {
-        return index.getOffset() + index.getOffset();
+        return index.getOffset() + index.getSize();
     }
 
 
