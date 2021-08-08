@@ -33,7 +33,7 @@ public enum INFOListChunkID {
         index = bytes;
     }
 
-    public byte[] getByte(){
+    public byte[] getByte() {
         return index;
     }
 

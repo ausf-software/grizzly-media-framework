@@ -3,7 +3,11 @@
 
 package ausf.software.file.audio;
 
-import java.nio.ByteBuffer;
+import ausf.software.constants.INFOListChunkID;
+import ausf.software.util.INFOChunkField;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WAVFile {
 
@@ -19,6 +23,8 @@ public class WAVFile {
 
     protected int dataOffset;           // смещение области данных
     protected int dataSize;             // размер аудио данных
+
+    protected List<INFOChunkField> info = new ArrayList();
 
     public String getPath() {
         return path;
@@ -54,6 +60,14 @@ public class WAVFile {
 
     public int getDataOffset() {
         return dataOffset;
+    }
+
+    public void addInfo(INFOListChunkID chunkId, String text) {
+        info.add(new INFOChunkField(chunkId, text));
+    }
+
+    public List getInfoList() {
+        return info;
     }
 
 }
