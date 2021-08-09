@@ -1,3 +1,6 @@
+// Copyright © 2021 Shcherbina Daniil
+// License: http://opensource.org/licenses/MIT
+
 package ausf.software.util;
 
 import ausf.software.constants.INFOListChunkID;
