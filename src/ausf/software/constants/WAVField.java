@@ -18,7 +18,8 @@ public enum WAVField {
     CHUNK_DATA          (new Field(4, 0)), // this field has a local offset
     DATA_SIZE           (new Field(4, 4)), // this field has a local offset
 
-    CHUNK_INFO           (new Field(4, 0)), // this field has a local offset
+    LIST_CONTAINER      (new Field(4, 0)), // this field has a local offset
+    CHUNK_INFO          (new Field(4, 0)), // this field has a local offset
     ;
 
 

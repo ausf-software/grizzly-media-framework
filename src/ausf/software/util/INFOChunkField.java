@@ -20,4 +20,8 @@ public class INFOChunkField {
         return text;
     }
 
+    public int getSize() {
+        return 4 + text.length() + 1;
+    }
+
 }
