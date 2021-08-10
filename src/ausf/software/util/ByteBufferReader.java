@@ -49,4 +49,12 @@ public class ByteBufferReader {
         return 0;
     }
 
+    public void close() {
+        try {
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

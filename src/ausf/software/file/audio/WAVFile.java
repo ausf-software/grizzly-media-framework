@@ -74,7 +74,11 @@ public class WAVFile {
         return byteRate;
     }
 
-    public int getBitsPerSample() {
+    public short getBlockAlign() {
+        return blockAlign;
+    }
+
+    public short getBitsPerSample() {
         return bitsPerSample;
     }
 
@@ -86,6 +90,25 @@ public class WAVFile {
         return dataOffset;
     }
 
+    // TODO: optimize - get rid of storage in memory of two almost identical arrays
+    public byte[] getData() {
+        if (data.length == 0) {
+            byte[] tmp = new byte[0];
+            try {
+                FileInputStream inputStream = new FileInputStream(path);
+                tmp = new byte[inputStream.available()];
+                inputStream.read(tmp);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            data = Arrays.copyOfRange(tmp, dataOffset + 8, dataOffset + dataSize);
+            tmp = new byte[0];
+        }
+        return data;
+    }
+
     public void addInfo(INFOListChunkID chunkId, String text) {
         info.add(new INFOChunkField(chunkId, text));
     }
@@ -94,6 +117,7 @@ public class WAVFile {
         return info;
     }
 
+    // TODO: optimize - get rid of storage in memory of two almost identical arrays
     public AudioData getAudioData() {
         byte[] tmp = new byte[0];
         try {
@@ -106,7 +130,7 @@ public class WAVFile {
             e.printStackTrace();
         }
         return new AudioData(audioFormat, numChannels, sampleRate, byteRate, blockAlign, bitsPerSample,
-                            Arrays.copyOfRange(tmp, dataOffset, dataOffset + dataSize));
+                            Arrays.copyOfRange(tmp, dataOffset + 8, dataOffset + dataSize));
     }
 
     private int initFileSize() {
@@ -115,7 +139,8 @@ public class WAVFile {
             tmp = dataSize + WAVField.CONTAINER_RIFF.getSize() + WAVField.RIFF_CONTAINER_SIZE.getSize()
                     + WAVField.FORMAT_TAG.getSize() + WAVField.CHUNK_FTM.getSize() + WAVField.CHUNK_FTM_SIZE.getSize()
                     + WAVField.AUDIO_FORMAT.getSize() + WAVField.NUMBER_CHANNELS.getSize() + WAVField.SAMPLE_RATE.getSize()
-                    + WAVField.BYTE_RATE.getSize() + WAVField.BLOCK_ALIGN.getSize() + WAVField.BITS_PER_SAMPLE.getSize();
+                    + WAVField.BYTE_RATE.getSize() + WAVField.BLOCK_ALIGN.getSize() + WAVField.BITS_PER_SAMPLE.getSize()
+                    + WAVField.CHUNK_DATA.getSize() + WAVField.DATA_SIZE.getSize();
 
             if (info.size() != 0) {
                 tmp += WAVField.CHUNK_INFO.getSize() + WAVField.LIST_CONTAINER.getSize();
