@@ -5,12 +5,12 @@ package ausf.software.file;
 
 public class AudioData {
 
-    private short audioFormat;        // формат сжатия
-    private short numChannels;        // количество каналов
-    private int sampleRate;           // частота дискретизации
-    private int byteRate;             // количество байт, переданных за секунду воспроизведения
-    private short blockAlign;         // количество байт для одного сэмпла, включая все каналы
-    private short bitsPerSample;      // количество бит в сэмпле
+    private short audioFormat;        // compression format
+    private short numChannels;        // number of channels
+    private int sampleRate;           // sampling frequency
+    private int byteRate;             // the number of bytes transferred per second of playback
+    private short blockAlign;         // number of bytes for one sample, including all channels
+    private short bitsPerSample;      // the number of bits in the sample
 
     private byte[] data;
 

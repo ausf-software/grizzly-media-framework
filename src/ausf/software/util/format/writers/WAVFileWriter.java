@@ -9,25 +9,8 @@ import ausf.software.file.audio.WAVFile;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.ByteBuffer;
 
 public class WAVFileWriter {
-
-    private byte[] chunkId;           // 4 байта, содержит символы "RIFF".
-    private byte[] chunkSize;         // 4 байта, размер файла - 8, ибо не включаются два первых поля.
-    private byte[] formatTag;         // 4 байта, содержит символы "WAVE".
-
-    private byte[] subChunkId_1;      // 4 байта, содержит символы "fmt ".
-    private byte[] subChunkSize_1;    // 4 байта, оставшийся размер подцепочки, начиная с этой позиции.
-    private byte[] audioFormat;       // 2 байта, формат сжатия.
-    private byte[] numChannels;       // 2 байта, количество каналов.
-    private byte[] sampleRate;        // 4 байта, частота дискретизации.
-    private byte[] byteRate;          // 4 байта, количество байт, переданных за секунду воспроизведения.
-    private byte[] blockAlign;        // 2 байта, количество байт для одного сэмпла, включая все каналы.
-    private byte[] bitsPerSample;     // 2 байта, количество бит в сэмпле.
-
-    private byte[] subChunkId_2;      // 4 байта, содержит символы "data".
-    private byte[] subChunkSize_2;    // 4 байта, количество байт в области данных.
 
     private WAVFile wavFile;
     private FileOutputStream outputStream;

@@ -5,6 +5,7 @@ package ausf.software.file.audio;
 
 import ausf.software.constants.INFOListChunkID;
 import ausf.software.constants.WAVCodecRegistries;
+import ausf.software.constants.WAVContainerNameByte;
 import ausf.software.constants.WAVField;
 import ausf.software.file.AudioData;
 import ausf.software.util.INFOChunkField;
@@ -20,19 +21,20 @@ public class WAVFile {
 
     protected String path;
 
-    protected int fileSize;             // размер файла
-    protected short audioFormat;        // формат сжатия
-    protected short numChannels;        // количество каналов
-    protected int sampleRate;           // частота дискретизации
-    protected int byteRate;             // количество байт, переданных за секунду воспроизведения
-    protected short blockAlign;         // количество байт для одного сэмпла, включая все каналы
-    protected short bitsPerSample;      // количество бит в сэмпле
+    protected int fileSize;             // file size
+    protected short audioFormat;        // compression format
+    protected short numChannels;        // number of channels
+    protected int sampleRate;           // sampling frequency
+    protected int byteRate;             // the number of bytes transferred per second of playback
+    protected short blockAlign;         // number of bytes for one sample, including all channels
+    protected short bitsPerSample;      // the number of bits in the sample
 
-    protected int dataOffset;           // смещение области данных
-    protected int dataSize;             // размер аудио данных
+    protected int dataOffset;           // data area offset
+    protected int dataSize;             // audio data size
 
     protected byte[] data = new byte[0];
 
+    protected List<WAVContainerNameByte> chunks;
     protected List<INFOChunkField> info = new ArrayList();
 
     public WAVFile(String path, AudioData audioData) {

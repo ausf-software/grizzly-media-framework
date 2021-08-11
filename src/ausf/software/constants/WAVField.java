@@ -9,20 +9,20 @@ public enum WAVField {
     RIFF_CONTAINER_SIZE (new Field(4, 4)),
     FORMAT_TAG          (new Field(4, 8)),
 
-    CHUNK_FTM           (new Field(4, 12)),
-    CHUNK_FTM_SIZE      (new Field(4, 16)),
-    AUDIO_FORMAT        (new Field(2, 20)),
-    NUMBER_CHANNELS     (new Field(2, 22)),
-    SAMPLE_RATE         (new Field(4, 24)),
-    BYTE_RATE           (new Field(4, 28)),
-    BLOCK_ALIGN         (new Field(2, 32)),
-    BITS_PER_SAMPLE     (new Field(2, 34)),
+    CHUNK_FTM           (new Field(4, 0)),
+    CHUNK_FTM_SIZE      (new Field(4, 4)),
+    AUDIO_FORMAT        (new Field(2, 8)),
+    NUMBER_CHANNELS     (new Field(2, 10)),
+    SAMPLE_RATE         (new Field(4, 12)),
+    BYTE_RATE           (new Field(4, 16)),
+    BLOCK_ALIGN         (new Field(2, 20)),
+    BITS_PER_SAMPLE     (new Field(2, 22)),
 
-    CHUNK_DATA          (new Field(4, 0)), // this field has a local offset
-    DATA_SIZE           (new Field(4, 4)), // this field has a local offset
+    CHUNK_DATA          (new Field(4, 0)),
+    DATA_SIZE           (new Field(4, 4)),
 
-    LIST_CONTAINER      (new Field(4, 0)), // this field has a local offset
-    CHUNK_INFO          (new Field(4, 0)), // this field has a local offset
+    LIST_CONTAINER      (new Field(4, 0)),
+    CHUNK_INFO          (new Field(4, 0)),
     ;
 
 
