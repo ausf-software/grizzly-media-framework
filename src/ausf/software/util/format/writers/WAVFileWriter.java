@@ -1,5 +1,7 @@
-// Copyright © 2021 Shcherbina Daniil
-// License: http://opensource.org/licenses/MIT
+/*
+ * Copyright © 2021 Shcherbina Daniil
+ * License: http://opensource.org/licenses/MIT
+ */
 
 package ausf.software.util.format.writers;
 

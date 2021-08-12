@@ -1,5 +1,7 @@
-// Copyright © 2021 Shcherbina Daniil
-// License: http://opensource.org/licenses/MIT
+/*
+ * Copyright © 2021 Shcherbina Daniil
+ * License: http://opensource.org/licenses/MIT
+ */
 
 package ausf.software.util.format.readers;
 
@@ -9,7 +11,6 @@ import ausf.software.file.audio.WAVFile;
 import ausf.software.util.ByteBufferReader;
 
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WAVFileReader extends WAVFile {
@@ -21,7 +22,6 @@ public class WAVFileReader extends WAVFile {
     public WAVFileReader(String path) {
         this.path = path;
         reader = new ByteBufferReader(path);
-        chunks = new ArrayList<>();
         read();
         reader.close();
         checkChunks();
