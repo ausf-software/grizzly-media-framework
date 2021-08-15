@@ -5,8 +5,16 @@
 
 package ausf.software.constants;
 
+/**
+ * Storage of constant values of the buffer
+ * size for reading the file format
+ */
+
 public enum BufferSizes {
 
+    /**
+     * The size of the buffer readable for the WAV file.
+     */
     WAVE_BUFFER_SIZE ( 10240),
     ;
 
@@ -16,6 +24,12 @@ public enum BufferSizes {
         index = i;
     }
 
+    /**
+     * Returns the buffer size.
+     *
+     * @return the buffer size
+     *
+     */
     public int getSize() {
         return index;
     }
