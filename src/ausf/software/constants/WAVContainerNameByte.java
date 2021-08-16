@@ -7,6 +7,9 @@ package ausf.software.constants;
 
 /**
  * Storage of byte values for WAV containers name.
+ * @author  Shcherbina Daniil
+ * @since   0.1.0
+ * @version 0.1.0
  */
 
 public enum WAVContainerNameByte {

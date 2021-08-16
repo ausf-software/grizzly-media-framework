@@ -10,6 +10,9 @@ import ausf.software.constants.INFOListChunkID;
 /**
  * Implementation of a container for storing information
  * about a single field of file metadata.
+ * @author  Shcherbina Daniil
+ * @since   0.1.0
+ * @version 0.1.0
  */
 
 public class INFOChunkField {

@@ -284,7 +284,9 @@ public class WAVFile {
                             Arrays.copyOfRange(tmp, dataOffset + 8, dataOffset + dataSize));
     }
 
-    // calculates the estimated file size
+    /**
+     * calculates the estimated file size.
+     */
     private int initFileSize() {
         int tmp = 0;
         if (audioFormat == WAVCodecRegistries.FORMAT_PCM.getIndex()) {

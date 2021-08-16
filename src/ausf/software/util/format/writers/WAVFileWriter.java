@@ -12,11 +12,31 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import ausf.software.util.Math;
+
+/**
+ *
+ * Implementation of the WAV file writer.
+ *
+ * @author  Shcherbina Daniil
+ * @since   0.1.0
+ * @version 0.1.0
+ */
 public class WAVFileWriter {
 
+    /**
+     * An instance of the WAVE file being written
+     */
     private WAVFile wavFile;
+    /**
+     * File recording stream
+     */
     private FileOutputStream outputStream;
 
+    /**
+     * Creates an instance of the WAV file writer, specifying the file to be written.
+     * @param wavFile the object of the WAV file to be recorded
+     */
     public WAVFileWriter(WAVFile wavFile) {
         this.wavFile = wavFile;
         try {
@@ -26,6 +46,9 @@ public class WAVFileWriter {
         }
     }
 
+    /**
+     * Writes a WAV file.
+     */
     public void write() {
         writeHeader();
         writeFTM();
@@ -37,10 +60,13 @@ public class WAVFileWriter {
         }
     }
 
+    /**
+     * Writes the WAV file header to the file.
+     */
     private void writeHeader() {
         try {
             outputStream.write(WAVContainerNameByte.CONTAINER_RIFF.getByte());
-            outputStream.write(toBytes(Integer.reverseBytes(wavFile.getFileSize())));
+            outputStream.write(Math.toBytes(Integer.reverseBytes(wavFile.getFileSize())));
             outputStream.write(WAVContainerNameByte.CHUNK_WAVE.getByte());
             outputStream.flush();
         } catch (IOException e) {
@@ -48,51 +74,37 @@ public class WAVFileWriter {
         }
     }
 
+    /**
+     * Writes the "ftm " chunk to the file.
+     */
     private void writeFTM () {
         try {
             outputStream.write(WAVContainerNameByte.CHUNK_FTM.getByte());
-            outputStream.write(toBytes(Integer.reverseBytes(16)));
-            outputStream.write(toBytes(Short.reverseBytes(wavFile.getAudioCodec())));
-            outputStream.write(toBytes(Short.reverseBytes(wavFile.getNumberAudioChanel())));
-            outputStream.write(toBytes(Integer.reverseBytes(wavFile.getSampleRate())));
-            outputStream.write(toBytes(Integer.reverseBytes(wavFile.getByteRate())));
-            outputStream.write(toBytes(Short.reverseBytes(wavFile.getBlockAlign())));
-            outputStream.write(toBytes(Short.reverseBytes(wavFile.getBitsPerSample())));
+            outputStream.write(Math.toBytes(Integer.reverseBytes(16)));
+            outputStream.write(Math.toBytes(Short.reverseBytes(wavFile.getAudioCodec())));
+            outputStream.write(Math.toBytes(Short.reverseBytes(wavFile.getNumberAudioChanel())));
+            outputStream.write(Math.toBytes(Integer.reverseBytes(wavFile.getSampleRate())));
+            outputStream.write(Math.toBytes(Integer.reverseBytes(wavFile.getByteRate())));
+            outputStream.write(Math.toBytes(Short.reverseBytes(wavFile.getBlockAlign())));
+            outputStream.write(Math.toBytes(Short.reverseBytes(wavFile.getBitsPerSample())));
             outputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Writes the "data" chunk to the file.
+     */
     private void writeDATA() {
         try {
             outputStream.write(WAVContainerNameByte.CHUNK_DATA.getByte());
-            outputStream.write(toBytes(Integer.reverseBytes(wavFile.getDataSize())));
+            outputStream.write(Math.toBytes(Integer.reverseBytes(wavFile.getDataSize())));
             outputStream.write(wavFile.getData());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // TODO: transfer to tools
-    private byte[] toBytes(short i) {
-        byte[] result = new byte[2];
-
-        result[0] = (byte) (i >> 8);
-        result[1] = (byte) (i /*>> 0*/);
-
-        return result;
-    }
-    private byte[] toBytes(int i) {
-        byte[] result = new byte[4];
-
-        result[0] = (byte) (i >> 24);
-        result[1] = (byte) (i >> 16);
-        result[2] = (byte) (i >> 8);
-        result[3] = (byte) (i /*>> 0*/);
-
-        return result;
-    }
-    //
 
 }
