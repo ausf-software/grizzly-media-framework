@@ -285,6 +285,29 @@ public class WAVFile {
     }
 
     /**
+     * Calculates and returns the duration of the audio data.
+     *
+     * @return the value of the duration of the audio data
+     *
+     */
+    public double getAudioDuration() {
+        return (double) dataSize / (numChannels * sampleRate * (bitsPerSample / 8));
+    }
+
+    /**
+     * Returns an array of audio data for the specified frame interval.
+     *
+     * @return an array of audio data bytes for the specified frame interval
+     *
+     * @param startPoint initial frame
+     * @param stopPoint end frame
+     */
+    public byte[] getBytesTimeInterval(int startPoint, int stopPoint) {
+        return Arrays.copyOfRange(data, startPoint * numChannels * sampleRate * (bitsPerSample / 8),
+                                        stopPoint * numChannels * sampleRate * (bitsPerSample / 8));
+    }
+
+    /**
      * calculates the estimated file size.
      */
     private int initFileSize() {
