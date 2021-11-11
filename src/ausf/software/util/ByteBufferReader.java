@@ -30,6 +30,7 @@ public class ByteBufferReader {
 
     /**
      * Creating an instance of the reader with the specified file path.
+     *
      * @param path file path
      */
     public ByteBufferReader(String path) {
@@ -43,6 +44,7 @@ public class ByteBufferReader {
     /**
      * Reads the specified data fragment from the stream and
      * returns an array of bytes of the read buffer.
+     *
      * @param bufferSize the size of the buffer to be read
      * @return an array of bytes of the read buffer
      */
@@ -63,6 +65,7 @@ public class ByteBufferReader {
 
     /**
      * Sets the buffer size and reads data from the stream.
+     *
      * @param size the size of the buffer to be read
      * @throws IOException
      */
@@ -73,6 +76,7 @@ public class ByteBufferReader {
 
     /**
      * Returns the number of bytes that are left to read.
+     *
      * @return the number of bytes that are left to read
      */
     public int getRemnant() {

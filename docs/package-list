@@ -1,6 +1,9 @@
 ausf.software.constants
+ausf.software.constants.audio.wav
+ausf.software.containers
 ausf.software.file
 ausf.software.file.audio
+ausf.software.io
+ausf.software.io.readers
+ausf.software.io.writers
 ausf.software.util
-ausf.software.util.format.readers
-ausf.software.util.format.writers

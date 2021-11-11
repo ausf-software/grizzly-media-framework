@@ -50,6 +50,7 @@ public enum ErrorMessage {
     /**
      * Implementation of an object with the error message text.
      * Contains an implementation of the Exception call with the error text.
+     *
      * @see ErrorMessage
      */
     static class Error {
@@ -60,6 +61,7 @@ public enum ErrorMessage {
 
         /**
          * Creates an object with the specified error text.
+         *
          * @param message the text of the error message
          */
         public Error(String message) {
@@ -79,6 +81,7 @@ public enum ErrorMessage {
 
         /**
          * Returns the text of the error message.
+         *
          * @return the text of the error message
          */
         private String getMessage() {

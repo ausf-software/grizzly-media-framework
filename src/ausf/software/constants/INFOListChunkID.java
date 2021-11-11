@@ -12,6 +12,7 @@ package ausf.software.constants;
  * <p>To describe the metadata fields, information from the book "Multimedia
  * Programming Interface and Data Specifications 1.0" by IBM Corporation and
  * Microsoft Corporation published in August 1991, was used.
+ *
  * @author  Shcherbina Daniil
  * @since   0.1.0
  * @version 0.1.0
