@@ -7,3 +7,5 @@ ausf.software.io
 ausf.software.io.readers
 ausf.software.io.writers
 ausf.software.util
+ausf.software.util.player.audio
+ausf.software.util.recorders.audio

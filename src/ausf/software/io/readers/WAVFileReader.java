@@ -79,6 +79,7 @@ public class WAVFileReader extends Reader {
         wavFileBuilder = wavFileBuilder.infoFields(infoFields);
         wavFileBuilder = wavFileBuilder.filePath(path);
         wavFileBuilder = wavFileBuilder.dataOffset(dataOffset);
+        wavFileBuilder = wavFileBuilder.dataSize(dataSize);
 
         return wavFileBuilder.build();
     }

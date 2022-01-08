@@ -54,6 +54,11 @@ public class WAVFile extends AudioFile {
     protected int dataOffset;
 
     /**
+     * Size of the audio data array
+     */
+    protected int dataSize;
+
+    /**
      * A list containing objects of WAV chunk identifiers found in the read file.
      */
     protected List<WAVContainerNameByte> chunks = new ArrayList<>();
@@ -82,8 +87,11 @@ public class WAVFile extends AudioFile {
         if (!builder.filePath.equals("") || builder.filePath != null) {
             path = builder.filePath;
             dataOffset = builder.dataOffset;
+            data = new byte[0];
+            dataSize = builder.dataSize;
         } else {
                 data = builder.data;
+                dataSize = data.length;
                 fileSize = initFileSize();
         }
     }
@@ -117,7 +125,7 @@ public class WAVFile extends AudioFile {
      */
     @Override
     public byte[] getData() {
-        if (data.length == 0) {
+        if (data == null || data.length == 0) {
             byte[] tmp = new byte[0];
             try {
                 FileInputStream inputStream = new FileInputStream(path);
@@ -128,7 +136,8 @@ public class WAVFile extends AudioFile {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            data = Arrays.copyOfRange(tmp, dataOffset + 8, dataOffset + data.length);
+
+            data = Arrays.copyOfRange(tmp, dataOffset + 8, dataOffset + dataSize);
             tmp = new byte[0];
         }
         return data;
@@ -162,18 +171,8 @@ public class WAVFile extends AudioFile {
      * @see AudioData
      */
     public AudioData getAudioData() {
-        byte[] tmp = new byte[0];
-        try {
-            FileInputStream inputStream = new FileInputStream(path);
-            tmp = new byte[inputStream.available()];
-            inputStream.read(tmp);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         return new AudioData(audioFormat, numChannels, sampleRate, byteRate, blockAlign, bitsPerSample,
-                            Arrays.copyOfRange(tmp, dataOffset + 8, dataOffset + data.length));
+                            Arrays.copyOfRange(getData(), dataOffset + 8, dataOffset + data.length));
     }
 
     /**
@@ -270,9 +269,25 @@ public class WAVFile extends AudioFile {
         private byte[] data;
 
         /**
-         *  The value of the offset of the audio data chunk in the file..
+         *  The value of the offset of the audio data chunk in the file.
          */
         private int dataOffset;
+
+        /**
+         * Size of the audio data array.
+         */
+        private int dataSize;
+
+        /**
+         * Returns an instance of the WAV file builder class with a modified audio data size field
+         *
+         * @return an instance of the WAV file builder class with a modified audio data size field
+         * @param dataSize Size of the audio data array.
+         */
+        public WAVFileBuilder dataSize(int dataSize) {
+            this.dataSize = dataSize;
+            return this;
+        }
 
         /**
          * A list containing objects of WAV chunk identifiers found in the read file.
